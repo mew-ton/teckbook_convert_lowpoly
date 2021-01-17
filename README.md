@@ -1,1 +1,3 @@
-# tecbook_convert_lowpoly
+# ローポリ化改変備忘録
+
+執筆中...
