@@ -17,3 +17,7 @@ exiftool dist/output.pdf \
     -Marked="True" \
     -rights="© 2021 みゅーとん" \
     -lang ja
+
+# remove tmp files
+rm dist/cover.pdf
+rm dist/docs.pdf
