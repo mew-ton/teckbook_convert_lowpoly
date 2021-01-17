@@ -1,0 +1,41 @@
+from: markdown+emoji
+to: html5
+
+resource-path: ["."]
+
+table-of-contents: true
+toc-depth: 2
+number-sections: true
+number-offset: [0, 0, 0, 0, 0, 0]
+strip-empty-paragraphs: true
+
+eol: lf
+strip-comments: false
+ascii: true
+
+highlight-style: pygments
+
+listings: false
+
+reference-links: true
+reference-location: block
+atx-headers: false
+
+track-changes: accept
+
+html-q-tags: false
+
+css:
+  - src/root/styles/github-markdown.css
+
+ipynb-output: best
+
+metadata:
+  pagetitle: 苦しんで実践したハイポリアバターのローポリ化備忘録
+  author: "@_mew_ton"
+
+
+fail-if-warnings: false
+dump-args: false
+ignore-args: false
+trace: false
