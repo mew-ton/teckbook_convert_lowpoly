@@ -28,11 +28,14 @@ html-q-tags: false
 css:
   - src/root/styles/github-markdown.css
 
+include-after-body:
+  - src/root/imprint.html
+
 ipynb-output: best
 
 metadata:
   pagetitle: 苦しんで実践したハイポリアバターのローポリ化備忘録
-  author: "@_mew_ton"
+  author: みゅーとん
 
 
 fail-if-warnings: false
