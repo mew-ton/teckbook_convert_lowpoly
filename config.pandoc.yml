@@ -26,6 +26,7 @@ track-changes: accept
 html-q-tags: false
 
 css:
+  - src/root/styles/main.css
   - src/root/styles/github-markdown.css
 
 include-after-body:
@@ -34,9 +35,8 @@ include-after-body:
 ipynb-output: best
 
 metadata:
-  pagetitle: 苦しんで実践したハイポリアバターのローポリ化備忘録
+  pagetitle: PC向けアバター 5000ポリまでダイエット
   author: みゅーとん
-
 
 fail-if-warnings: false
 dump-args: false
