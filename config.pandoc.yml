@@ -34,10 +34,6 @@ include-after-body:
 
 ipynb-output: best
 
-metadata:
-  pagetitle: PC向けアバター 5000ポリまでダイエット
-  author: みゅーとん
-
 fail-if-warnings: false
 dump-args: false
 ignore-args: false

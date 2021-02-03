@@ -9,7 +9,8 @@ pdfunite dist/cover.pdf dist/docs.pdf dist/output.pdf
 
 # edit metadatas
 exiftool dist/output.pdf \
-    -Title="ローポリ化改変備忘録" \
+    -Title="PCアバター 5000ポリまでダイエット" \
+    -Subtitle="Quest Excellentを目指す本"
     -Keywords="VRChat vrchat VRC vrc Avatar Occurus Quest Unity Blender" \
     -Author="みゅーとん" \
     -Producer="pandoc wkhtmltopdf img2pdf pdfunite" \
