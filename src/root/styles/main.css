@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Hack: TOCの直後に改ページ */
+h1[data-number="1"] {
+    page-break-before: always;
+}

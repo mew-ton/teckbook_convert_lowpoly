@@ -26,6 +26,7 @@ track-changes: accept
 html-q-tags: false
 
 css:
+  - src/root/styles/main.css
   - src/root/styles/github-markdown.css
 
 include-after-body:
@@ -33,12 +34,14 @@ include-after-body:
 
 ipynb-output: best
 
-metadata:
-  pagetitle: 苦しんで実践したハイポリアバターのローポリ化備忘録
-  author: みゅーとん
-
-
 fail-if-warnings: false
 dump-args: false
 ignore-args: false
 trace: false
+
+variables:
+  papersize: A4
+  margin-top: 18.5mm
+  margin-bottom: 18.5mm
+  margin-right: 16mm
+  margin-left: 16mm
