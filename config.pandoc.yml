@@ -42,3 +42,10 @@ fail-if-warnings: false
 dump-args: false
 ignore-args: false
 trace: false
+
+variables:
+  papersize: A4
+  margin-top: 18.5mm
+  margin-bottom: 18.5mm
+  margin-right: 16mm
+  margin-left: 16mm
