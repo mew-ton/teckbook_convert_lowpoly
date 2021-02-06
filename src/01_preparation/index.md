@@ -31,7 +31,7 @@
 |**Polygons**|5,000|5,000|7,500|10,000|
 |**Skinned Mesh Renderer**|1|1|2|2|
 |**Mesh Renderer**|1|1|2|2|
-|**Materials**|1|1|2|4|
+|**Material Slot**|1|1|2|4|
 |**Bones**|75|90|150|150|
 
 また、以下の使用は公式により制限されています。
