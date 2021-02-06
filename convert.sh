@@ -2,6 +2,7 @@
 
 # create pdfs
 img2pdf src/root/images/cover.jpg --output dist/cover.pdf
+pandoc -d config.pandoc.yml -o docs.html src/**/*.md
 pandoc -d config.pandoc.yml -o dist/docs.pdf src/**/*.md
 
 # merge pdf

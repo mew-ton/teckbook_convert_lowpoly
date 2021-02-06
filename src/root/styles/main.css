@@ -4,6 +4,16 @@ body {
 }
 
 /* Hack: TOCの直後に改ページ */
-h1[data-number="1"] {
+body h1[data-number="1"] {
     page-break-before: always;
+}
+
+body table {
+    margin: 0 auto;
+}
+
+body figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
