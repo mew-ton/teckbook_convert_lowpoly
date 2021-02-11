@@ -1,12 +1,11 @@
 #!/bin/sh
 
 # create pdfs
-img2pdf src/root/images/cover.jpg --output dist/cover.pdf
 pandoc -d config.pandoc.yml -o docs.html src/**/*.md
 pandoc -d config.pandoc.yml -o dist/docs.pdf src/**/*.md
 
 # merge pdf
-pdftk dist/cover.pdf dist/docs.pdf cat output dist/output.pdf
+pdftk src/root/cover.pdf dist/docs.pdf cat output dist/output.pdf
 
 # edit metadatas
 exiftool dist/output.pdf \
@@ -21,5 +20,4 @@ exiftool dist/output.pdf \
     -lang ja
 
 # remove tmp files
-rm dist/cover.pdf
 rm dist/docs.pdf
