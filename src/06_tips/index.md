@@ -34,9 +34,9 @@ FBXエクスポート時にエラーとなる場合、UV展開が破損してい
 
 FBXエクスポート時に、表示されるエラーメッセージを確認して、以下の一文があるのを確認しましょう。あればUV破損によるエラーです。
 
-```
+`
 io_scene_fbx\export_fbx_bin.py", line 1174, in <generator> elem_data_single_int32_array(lay_uv, b"UVIndex", (uv2idx[uv_id] for uv_id in_uvtuples_gen(t_luv, t_lvindex)))
-```
+`
 
 ※ BlenderのFBXプラグインバージョンによって、多少異なる場合があると思います。確証はないです。少なくとも `UVIndex` の文字があるなら、このエラーだと疑って良いと思います。
 
@@ -65,15 +65,6 @@ io_scene_fbx\export_fbx_bin.py", line 1174, in <generator> elem_data_single_int3
 ## MeshBakerがうまくベイクしてくれない
 
 コンソールログをみましょう。公式の[FAQ](http://digitalopus.ca/site/mesh-baker-faq/)に、ログに対応する対処法が英語で書いてあるようです。
-
-## MeshBakerFreeを使う場合
-
-WIP
-
-以下について解説します！
-- 躓かないローポリ化の作業方法
-- Quest化向けのMeshBakerの使い方
-- 頬染めアニメーションのQuest対応化
 
 ---
 <div style="page-break-before:always"/>
