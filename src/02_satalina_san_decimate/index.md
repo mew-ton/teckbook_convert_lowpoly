@@ -2,10 +2,8 @@
 
 ## はじめに
 
-ポリゴン削減からアバターとしてアップするまでの手順は、アバターによって異なる場合があるため、
-手順を追って説明するのは難しそうに感じました。
-
-また、実際の作業においても、作業工程が進んで戻ってを繰り返すのは非常に非効率であるため、全体の作業の流れを予め頭に入れておいたほうがよいでしょう。
+ポリゴン削減からアバターとしてアップするまでの手順は、アバターによって異なる場合があるため、手順を追って説明するのは難しそうに感じました。
+また、実際の作業においても、作業工程が進んで戻ってを繰り返すのは非常に非効率であるため、全体の作業の流れを予め頭に入れておいたほうがよいと思います。
 
 そこで、私が実際に作業したサタリナさんでのQuest Excellent対応の記録を元に、**全体の作業の流れだけをざっくり解説します**。
 次章から、それぞれの工程における細かい作業の解説をします。
@@ -14,10 +12,18 @@
 
 ### サタリナさんのスペック
 
-WIP
+先に、サタリナさんのスペックをまとめます。
+サタリナさんは服と髪が２パターンありますが、表示しない方の服と髪はポリゴン数に含めないことにします。
 
+|項目|
+|---:|:----|
+|Total Avatar Status|poor|
+|Polys|34423|
+|SkinnedMeshRenderer|7|
+|MaterialSlot|10|
+|Bones|90|
 
-## 1. ポリゴン数削減作業
+## ポリゴン数削減作業
 
 ### Blendファイル初期準備
 
@@ -105,6 +111,8 @@ Collection内の各オブジェクトに対し、<u>モディファイア</u>か
 基本的にやることは、**不要な辺を削除** するか、 **辺をスライドして結合** だけをひたすら繰り返すのみです。
 ひたすらポリゴン数を削り、4943ポリまで減らしました。
 
+※ 角と羽は難しかったのでまるごと消しました。
+
 ![削った後の全体像](./src/02_satalina_san_decimate/images/03_04_all_result.png)
 
 ![手の比較: 頂点がかなり密集しているので、比較がわかりやすい。指は関節部分の辺だけ残して他は消しました](./src/02_satalina_san_decimate/images/03_11_diff_hands.png)
@@ -117,7 +125,7 @@ Collection内の各オブジェクトに対し、<u>モディファイア</u>か
 
 ![袖の比較: 袖のシワを完全になくしました](./src/02_satalina_san_decimate/images/03_15_diff_sleeve.png)
 
-## 2. ポリゴン数削減後の微調整
+## ポリゴン数削減後の微調整
 
 ### <u>法線</u>の修正
 
@@ -126,9 +134,8 @@ Collection内の各オブジェクトに対し、<u>モディファイア</u>か
 
 ポリゴン削減作業の影響で、法線の向きおかしくなっているので、忘れずに修正します。
 
-![Before](./src/02_satalina_san_decimate/images/04_01_broken_normal.png)
+![←Before&nbsp;&nbsp;&nbsp;After→](./src/02_satalina_san_decimate/images/04_01_broken_normal.png)
 
-![After](./src/02_satalina_san_decimate/images/04_02_fixed_normal.png)
 
 ### 不要なボーン削除とウェイトの塗り直し
 
@@ -144,11 +151,9 @@ Excellent対応でボーン数をへらす必要があるため、削除しま�
 
 ### <u>シェイプキー</u>の修正
 
-ポリゴンの削減作業の結果、全てのシェイプキーが下画像のように壊れます。どうやっても防ぐ方法はないようで、頑張って手作業で元の表情に近くなるように直します。
+ポリゴンの削減作業の結果、全てのシェイプキーが下画像左のように壊れます。どうやっても防ぐ方法はないようで、頑張って手作業で元の表情に近くなるように直します。
 
-![リップシンクで「あ」を発言するとこうなる](./src/02_satalina_san_decimate/images/05_01_broken_shapekey.png)
-
-![直した後の画像。あんまり違和感ない](./src/02_satalina_san_decimate/images/05_02_fixed_shapekey.png)
+![←Broken&nbsp;&nbsp;&nbsp;Fixed→](./src/02_satalina_san_decimate/images/05_01_broken_shapekey.png)
 
 ## Unityへインポート
 
@@ -169,7 +174,7 @@ Quest対応化の影響で半透化画像が使えないので、 **頬染め用
 
 ![照れ顔Animationの設定](./src/02_satalina_san_decimate/images/06_01_shy_animation.png)
 
-![ローポリで照れ顔対応できました](./src/02_satalina_san_decimate/images/06_02_shy_face.png)
+![←通常顔&nbsp;&nbsp;&nbsp;照れ顔→](./src/02_satalina_san_decimate/images/06_02_shy_face.png)
 
 ### ベイク
 
@@ -177,7 +182,7 @@ Quest対応化の影響で半透化画像が使えないので、 **頬染め用
 
 焼き上がりのオブジェクトに VRC_AvatarDescriptorを設定して完成です！
 
-![出来上がり](./src/02_satalina_san_decimate/images/07_01_result.png)
+![焼き上がり](./src/02_satalina_san_decimate/images/07_01_result.png)
 
 ![ステータスはQuestでExcellentランク。対戦ありがとうございました](./src/02_satalina_san_decimate/images/07_02_status.png)
 
