@@ -1,4 +1,4 @@
-# 方法解説: 最後の調整とアバター化
+# 解説③ 最後の調整とアバター化
 
 ## Unityにインポート
 
@@ -28,6 +28,7 @@ Unityプロジェクト内のフォルダのどこかに、エクスポートし
 
 正常に取り込めたなら、FBXファイルを選択し、<u>インスペクター</u>から、以下のように設定します
 
+- Model .. 関係ないところなので、各自最適な設定をする
 - Rig .. AnimationType を <u>Humanoid</u> に設定。 AvatarDefinitionを `Create From This Model` のまま、Applyする。設定が提要されるとConfigureボタンが有効化されるので、必要なら開いて調整する
 - Animation .. importしない
 - Material .. 各マテリアルのスロットに、対応するマテリアルを作成し、セットする。それぞれ、Quest対応のために VRChat/Mobileシェーダーのみを設定しよう。
@@ -77,7 +78,7 @@ Gimp, Photoshop等のソフトを使って、頬染め状態の顔と、そう�
 
 ![アニメーションにマテリアル変更を追加](./src/05_how_to_convert_avatar/images/03_02_shy_animation.png)
 
-![設定プレビュー](./src/05_how_to_convert_avatar/images/03_00_preview_anim.png)
+![プレビューしてみるとこんな感じになります](./src/05_how_to_convert_avatar/images/03_03_shy_result.png)
 
 ## マテリアルをベイク
 
@@ -105,7 +106,7 @@ Excellentを目指す場合はマテリアルを1つにまとめなければな�
 ここでの適切な大きさは **ベイクの手法によって異なる** ため、一概に説明はできません。
 
 以下に説明する <u>MeshBaker</u>では、アトラス化の結果となるテクスチャのサイズを指定することができ、
-元テクスチャのサイズ的にどうしてもはみ出してしまう場合は、UVとテクスチャの比率を調整して、うまいこと収めてくれる機能があります。
+また、UVとテクスチャの位置や比率を調整してアトラス化してくれる機能があります。
 オススメです。
 
 他のベイク手法については、私自身の調査不足もあって、解説は不可能です。他の手法を使う際は、出来上がりがどうなるかを先に把握し、その上でテクスチャのサイズを調整しましょう。
@@ -117,9 +118,7 @@ PC向けとQuest向けで、テクスチャやマテリアルをフォルダ分�
 
 ### MeshBakerの作成とセットアップ
 
-今回は **ローポリ化したアバターモデルをQuest対応する** 明確な目的があるので、
-MeshBakerを、**複数のメッシュ・マテリアル・テクスチャをまとめて１つにする** ようにセットアップしていきます。
-
+MeshBakerには様々なモードがありますが、今回は目的に合わせて **複数のメッシュ・マテリアル・テクスチャをそれぞれ１つにまとめて出力する** モード (Texture And Mateiral Baker) を使用します。
 まず、ローポリのアバターオブジェクトがヒエラルキーに配置されているシーンに、<u>Texture And Material Baker</u> を作成します
 
 ![ここから。](./src/05_how_to_convert_avatar/images/05_01_create_mesh_baker.png)
@@ -138,15 +137,14 @@ MeshBakerを、**複数のメッシュ・マテリアル・テクスチャをま
 
 ![これでOKです](./src/05_how_to_convert_avatar/images/05_04_after_dnd.png)
 
-※ 同じオブジェクトを複数設定しないように注意
+※ 同じオブジェクトを複数設定しないように注意しましょう。
 
 #### 作業ファイル・出力先の設定
 
 インスペクターを少し下に進むと、 `Output` の項目があります。`Result Type` を `Atlas` に設定し、その真下のボタンを押して、TextureBakerの作業用ファイルの保存先を設定します。
-
 保存した先の同じフォルダには、ベイク結果のテクスチャやマテリアル、メッシュが配置されます。他の作業ファイルと混同しないように、フォルダを分けておくのをおすすめします。
 
-![Outputの項目] (./src/05_how_to_convert_avatar/images/05_05_material_output_setting.png)
+![Outputの項目](./src/05_how_to_convert_avatar/images/05_05_material_output_setting.png)
 
 ![baked.asset として保存したら、早速Materialが設置されました。これから作業した結果がこのファイルに上書きされていきます](./src/05_how_to_convert_avatar/images/05_06_output_path.png)
 
@@ -170,7 +168,7 @@ MeshBakerを、**複数のメッシュ・マテリアル・テクスチャをま
     <dt>Force Power-Of-Two Atlas</dt>
     <dd>公式説明なし.チェックを入れておいたほうが良いらしい・・？。 ※ 判明しだい記載を変更します</dd>
     <dt> Blend Non-Texture Properties</dt>
-    <dd>テクスチャの画像以外の要素をベイク結果の情報に付加する。ベイク結果のマテリアルシェーダに、TextureBlenderのスクリプトを書き込む必要がある。Mobileシェーダーでは使わない</dd>
+    <dd>テクスチャの画像以外の要素をベイク結果の情報に付加する。ベイク結果のマテリアルシェーダに、TextureBlenderのスクリプトを書き込む必要がある。<br />今回はMobile用シェーダーで、パラメータが殆どないので、使わない</dd>
     <dt>Texture Packer</dt>
     <dd>アトラス化の手法を選択する。詳細は後述</dd>
     <dt>Custom Shader Propert Names</dt>
@@ -185,7 +183,7 @@ Texture Packerのプルダウンで選択できるアトラス化の手法を説
 
 <dl>
     <dt>Unity's Pack Texture</dt>
-    <dd>Unityの標準機能として搭載されているアトラス化手法. コレを使うならMeshBakerを使う意味が皆無。アトラス化結果ではみ出してしまう場合は、元画像をリサイズする場合がある</dd>
+    <dd>Unityの標準機能として搭載されているアトラス化手法。コレを使うならMeshBakerを使う意味が皆無。アトラス化結果ではみ出してしまう場合は、元画像をリサイズする場合がある</dd>
     <dt>Mesh Baker Texture Packer</dt>
     <dd>Mesh Bakerによるテクスチャのアトラス化手法を使う。メモリ使用量が最適化されている。アトラス化結果ではみ出してしまう場合は、元画像をリサイズする場合がある。 **これが設定されていれば基本OK**</dd>
     <dt>Mesh Baker Texture Packer Fast</dt>
@@ -196,7 +194,7 @@ Texture Packerのプルダウンで選択できるアトラス化の手法を説
 
 #### ベストプラクティス
 
-MeshBakerの公式の説明より、最高効率かつ手間なくベイクするための条件は以下のとおり
+MeshBakerの公式より、最高効率かつ手間なくベイクするための条件は以下のとおり
 
 - 全てのマテリアルが使用するシェーダーが同じである
 - 複数のマテリアルから１つのテクスチャを参照する構成になっていない
@@ -262,7 +260,7 @@ Quest化のためのモデルベイクなので、基本的に以下の設定通
 
 `Bake` ボタンを押す！以上！！
 
-ベイク、と聞くと、ワールド製作者が口を揃えて、ベイクに数時間かかるとぼやいているのを聞きますが、
+ベイクと聞くと、ワールド製作者が口を揃えて、ベイクに数時間かかるとぼやいているのを聞きますが、
 5000ポリアバターのベイクは５分もかからないです。とても快適
 
 ![瞬で焼き上がりました](./src/05_how_to_convert_avatar/images/05_10_bake_result.png)
@@ -271,7 +269,7 @@ Quest化のためのモデルベイクなので、基本的に以下の設定通
 それぞれ内容は以下の通りです。
 
 - MeshBaker-mesh-mesh .. ベイク結果のアバターのオブジェクト
-- decimated_satalina_san(Clone) .. ベイク元のオブジェクトのコピー
+- decimated_satalina_san(Clone) .. ベイク元のオブジェクトのコピー (中身のオブジェクト構成は全く同じ)
 
 ### 頬染めアニメーションへの対応も忘れずに
 
@@ -286,7 +284,9 @@ Quest化のためのモデルベイクなので、基本的に以下の設定通
 
 - ルートオブジェクト .. インポートしているAvatarSDKの <u>VRC-Avatar Descriptor</u>を追加し、各項目を設定 (後述)
 - MeshBaker-mesh-mesh .. Bodyに名前を変える
-- decimated_satalina_san(Clone) .. 中からArmatureを外階層に移動し、それ以外はいらないので消す
+- decimated_satalina_san(Clone) .. 中からArmatureを適切な場所に移動し、それ以外のオブジェクトはいらないので消す
+
+![一般的なアバターと同じ構成に直します](./src/05_how_to_convert_avatar/images/06_00_fix_baked.png)
 
 ### アバターの設定
 
