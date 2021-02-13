@@ -16,7 +16,7 @@ VRChatでは、PC, Questの２つのプラットフォームがあり、それ�
 
 ## ダウンロードページ
 
-ダウンロードは[Releasesから行えます](https://github.com/mew-ton/teckbook_convert_lowpoly/releases) から
+ダウンロードは[Releasesから行えます](https://github.com/mew-ton/teckbook_convert_lowpoly/releases)
 
 
 ## マサカリを投げる
