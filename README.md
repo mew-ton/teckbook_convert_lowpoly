@@ -21,4 +21,6 @@ VRChatでは、PC, Questの２つのプラットフォームがあり、それ�
 
 ## マサカリを投げる
 
-[Issue](https://github.com/mew-ton/teckbook_convert_lowpoly/issues)からお願いします
+[Issue](https://github.com/mew-ton/teckbook_convert_lowpoly/issues)から投稿していただくか、Twitter([@_mew_ton](https://twitter.com/_mew_ton))のDMにてお願いいたします。
+
+
